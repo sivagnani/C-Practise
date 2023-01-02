@@ -12,7 +12,7 @@ namespace Practise
         {
             int x = 12 * 30;
             Console.WriteLine(x);
-            return 1;
+            return 0;
         }
     }
     public class Sample2
