@@ -3,27 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//single line comment
+/*doublle line
+ comments*/
 
 namespace Practise
 {
     public class Sample1
     {
-        public static int Test()
+        public static void Test()
         {
             Console.WriteLine("Sample1");
             int x = 12 * 30;
             Console.WriteLine(x);
-            return 0;
         }
     }
     public class Sample2
     {
-        public static int Test()
+        public static void Test()
         {
             Console.WriteLine("Sample2");
             Console.WriteLine(FI(30));
             Console.WriteLine(FI(120));
-            return 0;
         }
         static int FI(int x)
         {
@@ -38,8 +39,8 @@ namespace Practise
     }
     public class Sample3
     {
-        
-        public static int Test()
+
+        public static void Test()
         {
             Console.WriteLine("Custom Type and pass by value");
             UC fc = new UC(12);
@@ -47,51 +48,68 @@ namespace Practise
             Console.WriteLine(fc.Convert(30));
             Console.WriteLine(fc.Convert(100));
             Console.WriteLine(fc.Convert(mf.Convert(1)));
-            return 0;
         }
     }
-    public class Sample4
+    public class StaticAndInstance
     {
-        static void Foo(int ab){
+        public string name;
+        public static int population;
+        public StaticAndInstance(string s)
+        {
+            Console.WriteLine("Example for static and instance");
+            name = s;
+            population = population + 1 ;
+        }
+    }
+    public class Checkingchecked
+    {
+        
+        public Checkingchecked()
+        {
+            Console.WriteLine(unchecked(int.MinValue - 2));
+        }
+    }
+    public class Passbyref
+    {
+        static void Foo(int ab)
+        {
             ab = 123;
         }
-        public static int Test()
+        public static void Test()
         {
             int a = new int();
             Console.WriteLine("Pass by reference");
             Foo(a);
             Console.WriteLine(a);
-            return 0;
         }
     }
-    public class Sample5
+    public class Passbyrefmodifier
     {
         static void Foo(ref int ab)
         {
             ab = 123;
         }
-        public static int Test()
+        public static void Test()
         {
             int a = new int();
             Console.WriteLine("Pass by reference modifier");
             Foo(ref a);
             Console.WriteLine(a);
-            return 0;
         }
     }
-    public class Sample6
+    public class Passbyrefusingout
     {
-        static void Foo(out int ab)
+        static void Foo(out int ab, out int c )
         {
             ab = 123;
+            c = 234;
         }
-        public static int Test()
+        public static void Test()
         {
             int a;
             Console.WriteLine("Pass by reference modifier using out");
-            Foo(out a);
+            Foo(out a,out _);
             Console.WriteLine(a);
-            return 0;
         }
     }
     public class Sample7
@@ -103,16 +121,15 @@ namespace Practise
                 sum += ab[i];
             return sum;
         }
-        public static int Test()
+        public static void Test()
         {
             Console.WriteLine("Using params");
-            Console.WriteLine(Foo(1,3,5,7));
-            return 0;
+            Console.WriteLine(Foo(1, 3, 5, 7));
         }
     }
     public class Sample8
     {
-        public static int Test()
+        public static void Test()
         {
             Console.WriteLine("Using if and else");
             int a = 5;
@@ -124,16 +141,15 @@ namespace Practise
                 Console.WriteLine("If block2");
             else
                 Console.WriteLine("else block2");
-            return 0;
         }
     }
     public class Sample9
     {
-        public static int Test()
+        public static void Test()
         {
             Console.WriteLine("Using switch");
             int a = 5;
-            switch(a)
+            switch (a)
             {
                 case 0: Console.WriteLine("0"); break;
                 case 1: Console.WriteLine("1"); break;
@@ -143,12 +159,11 @@ namespace Practise
                 case 5: Console.WriteLine("5"); goto case 3;
                 default: Console.WriteLine("not between 0-5"); break;
             }
-            return 0;
         }
     }
     public class Sample10
-    { 
-        public static int Test()
+    {
+        public static void Test()
         {
             Console.WriteLine("While");
             int a = 0;
@@ -157,9 +172,8 @@ namespace Practise
                 Console.WriteLine(a);
                 a++;
             }
-            return 0;
         }
-        public static int Test1()
+        public static void Test1()
         {
             Console.WriteLine("do While");
             int a = 0;
@@ -169,27 +183,106 @@ namespace Practise
                 a++;
             }
             while (a < 5);
-            return 0;
         }
-        public static int Test2()
+        public static void Test2()
         {
             Console.WriteLine("for");
-            for(int i=0; i < 5;i++)
+            for (int i = 0; i < 5; i++)
             {
                 Console.WriteLine(i);
             }
-            return 0;
         }
-        public static int Test3()
+        public static void Test3()
         {
             Console.WriteLine("foreach");
-            foreach(char a in "india")
+            foreach (char a in "india")
             {
                 Console.WriteLine(a);
             }
-            return 0;
         }
-
-
     }
+    public class Sample11
+    {
+        public readonly float Width, Height;
+
+        public Sample11(float width, float height)
+        {
+            Width = width;
+            Height = height;
+        }
+        public void Deconstruct(out float width, out float height)
+        {
+            Console.WriteLine("Deconstruct");
+            width = Width;
+            height = Height;
+        }
+    }
+    public class Stock
+    {
+        decimal dc;
+        public decimal Dc
+        {
+            get
+            {
+                return dc;
+            }
+            set
+            {
+                dc = value;
+            }
+        }
+    }
+    public class StockAuto
+    {
+        public decimal Dc
+        {
+            get;
+            set;
+        }
+    }
+    public class Indexer
+    {
+        string[] w = "Hi guys this is technovert".Split();
+        public string this[int num]
+        {
+            get => w[num];
+            set => w[num] = value;
+        }
+    }
+    public class StaticCons
+    {
+        static StaticCons()
+        {
+            Console.WriteLine("Static Constructor");
+        }
+    }
+    public partial class ParC
+    {
+        public static partial void test2();
+        public static void test()
+        {
+            Console.WriteLine("Partial Class 1");
+        }
+    }
+    public partial class ParC
+    {
+        public static partial void test2()
+        {
+            Console.WriteLine("Partial Class 2");
+            Console.WriteLine("Partial Method 1");
+        }
+    }
+    public class Asset
+    {
+        public string name;
+    }
+    public class Stocks : Asset
+    {
+        public long shares;
+    }
+    public class House : Asset
+    {
+        public decimal Mortage;
+    }
+    
 }
